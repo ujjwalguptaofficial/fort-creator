@@ -7,3 +7,4 @@ my-app/
 output/
 build
 *.tgz
+bin

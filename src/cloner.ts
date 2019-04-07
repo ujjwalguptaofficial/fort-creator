@@ -1,12 +1,12 @@
-const {
+import {
     execSync
-} = require('child_process');
+} from "child_process";
 
 const typescriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-typescript-starter";
 const javascriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-javascript-starter";
 
 
-exports.clone = function (type, name) {
+export const clone = function (type, name) {
     // clone with less history
     var command = "git clone --depth=1 ";
     // create the url based on type

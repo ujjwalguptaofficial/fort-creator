@@ -1,17 +1,15 @@
 const commander = require("commander");
-const inquirer = require('inquirer');
 const fs = require("fs");
 const {
-    execSync,
-    exec,
-    spawn
+    exec
 } = require('child_process');
 const {
-    clone
-} = require('./src/cloner');
-const {
-    askForFileName
-} = require('./src/ask_for_file_name');
+    clone,
+    askForFileName,
+    askForAdd,
+    getSnakeCase
+} = require('./src/index');
+var path = require("path");
 
 commander.option('new [folderName]', 'Create new project & put the content inside the specified folder').
 option('start', 'start development server').
@@ -22,20 +20,9 @@ parse(process.argv);
 const errorMessageForInvalidProjectDirectory = "Seems like you are not inside project directory.Please move to project dir & run the command again";
 if (commander.new) {
     const appname = typeof commander.new != "string" ? "fortjs-app" : commander.new;
-
-    const questions = [{
-        name: 'project_language',
-        message: "choose project language",
-        type: 'list',
-        choices: ["typescript", "javascript"]
-    }];
-    inquirer.prompt(questions).
-    then(function (answers) {
-        try {
-            clone(answers.project_language, appname);
-        } catch (err) {
-            console.error(err.message);
-        }
+    askForProjectLanguage().
+    then(function (language) {
+        clone(language, appname);
     });
 } else {
     var content;
@@ -45,6 +32,7 @@ if (commander.new) {
         });
     } catch (ex) {
         console.error(errorMessageForInvalidProjectDirectory);
+        return;
     }
     const packageInfo = JSON.parse(content);
     if (packageInfo && packageInfo.project && packageInfo.project.framework === "fortjs") {
@@ -82,17 +70,14 @@ if (commander.new) {
                 }
             });
         } else if (commander.add) {
-            var questions = [{
-                name: 'add_info',
-                message: "what do you want to add",
-                type: 'list',
-                choices: ["controller", "shield", "wall", "guard"]
-            }];
-            inquirer.prompt(questions).
-            then(function (answers) {
-                console.log(answers.add_info);
+            askForAdd().
+            then(function (component) {
                 askForFileName().then(function (fileName) {
-                    console.log(fileName);
+                    fileName = getSnakeCase(path.basename(fileName));
+                    const extension = project.language == "typescript" ? "ts" : "js";
+                    fs.writeFileSync(`${component}s/fileName.${extension}`, "fu", {
+                        encoding: "utf-8"
+                    });
                 })
             });
         }
