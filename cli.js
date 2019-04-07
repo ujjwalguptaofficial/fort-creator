@@ -9,6 +9,9 @@ const {
 const {
     clone
 } = require('./src/cloner');
+const {
+    askForFileName
+} = require('./src/ask_for_file_name');
 
 commander.option('new [folderName]', 'Create new project & put the content inside the specified folder').
 option('start', 'start development server').
@@ -77,6 +80,20 @@ if (commander.new) {
                 } else {
                     console.log('deploy command exited with code ' + code.toString());
                 }
+            });
+        } else if (commander.add) {
+            var questions = [{
+                name: 'add_info',
+                message: "what do you want to add",
+                type: 'list',
+                choices: ["controller", "shield", "wall", "guard"]
+            }];
+            inquirer.prompt(questions).
+            then(function (answers) {
+                console.log(answers.add_info);
+                askForFileName().then(function (fileName) {
+                    console.log(fileName);
+                })
             });
         }
     } else {
