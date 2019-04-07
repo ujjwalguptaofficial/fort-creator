@@ -2,7 +2,10 @@
   "name": "fort-creator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./cli.js",
+  "bin": {
+    "fort-creator": "./cli.js"
+  },
   "dependencies": {
     "commander": "^2.20.0",
     "inquirer": "^6.2.2"

@@ -14,6 +14,9 @@ exports.clone = function (type, name) {
     // clone inside the provided name
     command += " " + name;
     execSync(command);
+    console.log('setting up project');
     // Remove the .git directory
     execSync(`rm -rf ./${name}/.git`)
+    // downloading dependencies
+    execSync(`cd ${name} && npm install`);
 }

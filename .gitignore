@@ -3,6 +3,7 @@
 #################
 
 node_modules/
+my-app/
 output/
 build
 *.tgz
