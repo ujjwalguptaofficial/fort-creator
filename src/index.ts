@@ -6,7 +6,7 @@ import { clone } from "./cloner";
 import { askForAdd } from "./ask_for_add";
 import { askForFileName } from "./ask_for_file_name";
 import { getSnakeCase } from "./get_snake_case";
-import { handleDeploy, handleStart } from "./handlers";
+import { handleDeploy, handleStart, handleFileAdd } from "./handlers";
 
 commander.option('new [folderName]', 'Create new project & put the content inside the specified folder').
     option('start', 'start development server').
@@ -38,16 +38,7 @@ if (commander.new) {
             var deployFolderName = typeof commander.deploy == "string" ? commander.deploy : "bin";
             handleDeploy(deployFolderName);
         } else if (commander.add) {
-            askForAdd().
-                then(function (component) {
-                    askForFileName().then(function (fileName) {
-                        fileName = getSnakeCase(path.basename(fileName));
-                        const extension = packageInfo.language == "typescript" ? "ts" : "js";
-                        fs.writeFileSync(`${component}s/fileName.${extension}`, "fu", {
-                            encoding: "utf-8"
-                        });
-                    })
-                });
+            handleFileAdd(packageInfo.project.language);
         }
     } else {
         console.error(errorMessageForInvalidProjectDirectory);
