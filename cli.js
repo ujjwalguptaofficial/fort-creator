@@ -12,7 +12,7 @@ const {
 
 commander.option('new [folderName]', 'Create new project & put the content inside the specified folder').
 option('start', 'start development server').
-option('deploy [deploymentFolderName]', 'deploy codes', "build").
+option('deploy [deploymentFolderName]', 'create build for deployment').
 option('add', 'add the components').
 parse(process.argv);
 
@@ -60,7 +60,8 @@ if (commander.new) {
                 console.log('start command exited with code ' + code.toString());
             });
         } else if (commander.deploy) {
-            var cmd = exec('npm run deploy');
+            var deployFolderName = typeof commander.deploy == "string" ? commander.deploy : "bin";
+            var cmd = exec(`BUILD_FOLDER=${deployFolderName} npm run deploy`);
             cmd.on("error", function (err) {
                 console.error(err);
             })
@@ -71,7 +72,11 @@ if (commander.new) {
                 console.log(data.toString());
             });
             cmd.on('exit', function (code) {
-                console.log('deploy command exited with code ' + code.toString());
+                if (code == 0) {
+                    console.log("build created for deploy")
+                } else {
+                    console.log('deploy command exited with code ' + code.toString());
+                }
             });
         }
     } else {
