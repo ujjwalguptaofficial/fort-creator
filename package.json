@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@types/node": "^11.13.0",
-    "commander": "^2.20.0"
+    "commander": "^2.20.0",
+    "inquirer": "^6.2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^11.13.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
