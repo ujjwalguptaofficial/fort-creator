@@ -1,0 +1,34 @@
+{
+  "name": "fort-creator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@types/node": "^11.13.0",
+    "commander": "^2.20.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ujjwalguptaofficial/fort-creator.git"
+  },
+  "keywords": [
+    "fort",
+    "fortjs",
+    "fort",
+    "generator",
+    "fort",
+    "creator",
+    "cli",
+    "tool"
+  ],
+  "author": "Ujjwal Gupta",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ujjwalguptaofficial/fort-creator/issues"
+  },
+  "homepage": "https://github.com/ujjwalguptaofficial/fort-creator#readme"
+}
