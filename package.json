@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "buildpack": "npm run build && npm pack",
+    "buildpack": "npm run deploy && npm pack",
     "deploy": "NODE_ENV=production npm run build"
   },
   "repository": {
