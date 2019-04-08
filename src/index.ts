@@ -1,11 +1,7 @@
 import * as commander from "commander";
 import * as fs from "fs";
-import * as path from "path";
 import { askForProjectLanguage } from "./ask_for_project_language";
 import { clone } from "./cloner";
-import { askForAdd } from "./ask_for_add";
-import { askForFileName } from "./ask_for_file_name";
-import { getSnakeCase } from "./get_snake_case";
 import { handleDeploy, handleStart, handleFileAdd } from "./handlers";
 
 commander.option('new [folderName]', 'Create new project & put the content inside the specified folder').

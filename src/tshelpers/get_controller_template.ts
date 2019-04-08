@@ -20,6 +20,5 @@ export class ${controllerName} extends Controller {
             return result;
         }
     }
-}
-    `
+}`
 }
