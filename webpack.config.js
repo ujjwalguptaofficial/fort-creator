@@ -1,6 +1,9 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-
+const webpack = require("webpack");
+const {
+    banner
+} = require('./license');
 module.exports = {
     entry: [
         path.resolve(__dirname, 'src/index.ts')
@@ -37,8 +40,18 @@ module.exports = {
     output: {
         filename: 'app.js',
         path: path.resolve(__dirname, process.env.BUILD_FOLDER || 'bin'),
-        pathinfo: true
+        pathinfo: true,
+        library: 'Fort-Creator',
+        libraryTarget: "commonjs2"
     },
-    plugins: [],
+    plugins: [
+        new webpack.BannerPlugin({
+            banner: banner,
+        }),
+        new webpack.BannerPlugin({
+            banner: "#!/usr/bin/env node",
+            raw: true
+        }),
+    ],
     externals: [nodeExternals()]
 };
