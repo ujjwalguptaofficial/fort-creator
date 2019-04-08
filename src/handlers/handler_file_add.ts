@@ -11,13 +11,22 @@ import { ensureDir } from "../helpers";
 export const handleFileAdd = function (language: string) {
     askForAdd().
         then(function (fileType: string) {
-            askForFileName().then(function (componentName) {
-                const fileName = getSnakeCase(componentName);
+            askForFileName().then(function (file) {
+                const fileInfo = path.parse(file);
+                let fileNameWithExtension: string;
+                const componentName = fileInfo.name;
                 const extension = language == "typescript" ? "ts" : "js";
+                if (fileInfo.ext) {
+                    fileNameWithExtension = componentName + "." + extension;
+                }
+                else {
+                    fileNameWithExtension = getSnakeCase(componentName) + "." + extension;
+                }
+
                 const folderName = `${fileType}s`;
                 ensureDir(folderName);
                 const content = getContent(fileType, componentName);
-                const filePath = `${folderName}/${fileName}.${extension}`
+                const filePath = `${folderName}/${fileNameWithExtension}`
                 fs.writeFileSync(filePath, content, {
                     encoding: "utf-8"
                 });
@@ -46,7 +55,8 @@ const askForFileName = function () {
         }];
         prompt(questions).
             then(function (answers) {
-                res(path.parse(answers.file_name).name);
+                res(answers.file_name);
+                // res(path.parse(answers.file_name).name);
             });
     });
 }
