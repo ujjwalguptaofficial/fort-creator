@@ -4,7 +4,7 @@
   "description": "",
   "main": "./cli.js",
   "bin": {
-    "fort-creator": "./cli.js"
+    "fort-creator": "./bin/app.js"
   },
   "dependencies": {
     "commander": "^2.20.0",
@@ -20,7 +20,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "NODE_ENV=production npm run build"
   },
   "repository": {
     "type": "git",
