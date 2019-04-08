@@ -1,17 +1,13 @@
 export const getControllerTemplate = function (controllerName: string) {
     return `
-import { Controller, DefaultWorker, textResult, viewResult, Worker } from "fortjs";
+import { Controller, DefaultWorker, Worker } from "fortjs";
 
 export class ${controllerName} extends Controller {
 
     @DefaultWorker()
     async index() {
         try {
-            const model = {
-                title: 'FortJs'
-            };
-            const result = await viewResult('default/index.html', model);
-            return result;
+            
         } catch (ex) {
             console.log(ex);
             // handle exception and show user a good message.

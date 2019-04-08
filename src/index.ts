@@ -1,8 +1,7 @@
 import * as commander from "commander";
 import * as fs from "fs";
 import { askForProjectLanguage } from "./ask_for_project_language";
-import { clone } from "./cloner";
-import { handleDeploy, handleStart, handleFileAdd } from "./handlers";
+import { handleDeploy, handleStart, handleFileAdd, handleClone } from "./handlers";
 
 commander.option('new [folderName]', 'Create new project & put the content inside the specified folder').
     option('start', 'start development server').
@@ -15,7 +14,7 @@ if (commander.new) {
     const appname = typeof commander.new != "string" ? "fortjs-app" : commander.new;
     askForProjectLanguage().
         then(function (language) {
-            clone(language, appname);
+            handleClone(language, appname);
         });
 } else {
     var content;
