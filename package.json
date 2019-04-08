@@ -2,7 +2,7 @@
   "name": "fort-creator",
   "version": "1.0.0",
   "description": "",
-  "main": "./cli.js",
+  "main": "./bin/app.js",
   "bin": {
     "fort-creator": "./bin/app.js"
   },
@@ -19,7 +19,6 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "deploy": "NODE_ENV=production npm run build"
   },
@@ -30,9 +29,7 @@
   "keywords": [
     "fort",
     "fortjs",
-    "fort",
     "generator",
-    "fort",
     "creator",
     "cli",
     "tool"
