@@ -2,6 +2,7 @@ import { runCommand } from "../helpers";
 import { removeSync, moveSync, ensureDir, pathExistsSync } from "fs-extra";
 import * as Path from "path";
 import { Spinner } from "cli-spinner";
+import { EOL } from "os";
 
 const typescriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-typescript-starter";
 const javascriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-javascript-starter";
@@ -52,7 +53,7 @@ export const handleClone = function (type, name) {
                     console.log(`unable to install dependencies, process exited with code ${code.toString()}`)
                 }
                 else {
-                    console.log(`new project ${name} created`);
+                    console.log(`${EOL}new project ${name} created`);
                 }
             })
         }
