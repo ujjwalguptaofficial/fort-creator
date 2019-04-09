@@ -3,6 +3,7 @@ import * as fs from "fs";
 import { askForProjectLanguage } from "./ask_for_project_language";
 import { handleDeploy, handleStart, handleFileAdd, handleClone } from "./handlers";
 import * as commander from "commander";
+import { pathExistsSync } from "fs-extra";
 const errorMessageForInvalidProjectDirectory = "Seems like you are not inside project directory.Please move to project dir & run the command again";
 
 export const processCommand = function (commander) {
@@ -15,7 +16,12 @@ export const processCommand = function (commander) {
     } else {
         var content;
         try {
-            content = fs.readFileSync("./package.json", {
+            const pathOfPackage = "./package.json";
+            if (!pathExistsSync(pathOfPackage)) {
+                console.error(errorMessageForInvalidProjectDirectory);
+                return;
+            }
+            content = fs.readFileSync(pathOfPackage, {
                 encoding: "utf8"
             });
         } catch (ex) {
