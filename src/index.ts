@@ -1,9 +1,8 @@
-
-import * as fs from "fs";
 import { askForProjectLanguage } from "./helpers";
 import { handleDeploy, handleStart, handleFileAdd, handleClone } from "./handlers";
 import * as commander from "commander";
-import { pathExistsSync } from "fs-extra";
+import { pathExistsSync, readFileSync } from "fs-extra";
+import * as Path from "path";
 const errorMessageForInvalidProjectDirectory = "Seems like you are not inside project directory.Please move to project dir & run the command again";
 
 export const processCommand = function (commander) {
@@ -13,7 +12,16 @@ export const processCommand = function (commander) {
             then(function (language) {
                 handleClone(language, appname);
             });
-    } else {
+    }
+    else if (commander.version) {
+        const pathOfPackage = Path.join(__dirname, ".././package.json");
+        const contents = readFileSync(pathOfPackage, {
+            encoding: "utf8"
+        });
+        const packageInfo = JSON.parse(contents);
+        console.log(packageInfo.version);
+    }
+    else {
         var content;
         try {
             const pathOfPackage = "./package.json";
@@ -21,7 +29,7 @@ export const processCommand = function (commander) {
                 console.error(errorMessageForInvalidProjectDirectory);
                 return;
             }
-            content = fs.readFileSync(pathOfPackage, {
+            content = readFileSync(pathOfPackage, {
                 encoding: "utf8"
             });
         } catch (ex) {
@@ -48,6 +56,7 @@ commander.option('new [folderName]', 'Create new project & put the content insid
     option('start', 'start development server').
     option('deploy [deploymentFolderName]', 'create build for deployment').
     option('add', 'add the components').
+    option('v', 'get current version').
     parse(process.argv);
 
 processCommand(commander);
