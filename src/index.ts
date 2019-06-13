@@ -1,6 +1,6 @@
 
 import * as fs from "fs";
-import { askForProjectLanguage } from "./ask_for_project_language";
+import { askForProjectLanguage } from "./helpers";
 import { handleDeploy, handleStart, handleFileAdd, handleClone } from "./handlers";
 import * as commander from "commander";
 import { pathExistsSync } from "fs-extra";

@@ -1,8 +1,7 @@
-import { askForAdd } from "../ask_for_add";
+import { askForAdd, getSnakeCase } from "../helpers";
 import {
     prompt
 } from "inquirer";
-import { getSnakeCase } from "../get_snake_case";
 import * as path from "path";
 import * as fs from "fs";
 import { getControllerTemplate, getShieldTemplate, getGuardTemplate, getWallTemplate } from "../tshelpers";
