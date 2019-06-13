@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*!
- * @license :fort-creator - V1.1.1 - 13/06/2019
+ * @license :fort-creator - V1.1.2 - 13/06/2019
  * https://github.com/ujjwalguptaofficial/fort-creator
  * Copyright (c) 2019 @Ujjwal Gupta; Licensed Apache-2.0
  */
@@ -556,15 +556,14 @@ var processCommand = function (commander) {
         });
     }
     else if (commander.version) {
-        var pathOfPackage = external_path_["join"](__dirname, "./package.json");
-        console.log(pathOfPackage);
+        var pathOfPackage = external_path_["join"](__dirname, ".././package.json");
         var contents = Object(external_fs_extra_["readFileSync"])(pathOfPackage, {
             encoding: "utf8"
         });
-        var packageInfo = JSON.parse(content);
+        var packageInfo = JSON.parse(contents);
         console.log(packageInfo.version);
     }
-    else {
+    else if (commander.add || commander.start || commander.deploy) {
         var content;
         try {
             var pathOfPackage = "./package.json";
@@ -596,12 +595,15 @@ var processCommand = function (commander) {
             console.error(errorMessageForInvalidProjectDirectory);
         }
     }
+    else {
+        console.log('invalid command');
+    }
 };
 external_commander_["option"]('new [folderName]', 'Create new project & put the content inside the specified folder').
+    option('-v, --version', 'get current version').
     option('start', 'start development server').
     option('deploy [deploymentFolderName]', 'create build for deployment').
     option('add', 'add the components').
-    option('-v, --version', 'get current version').
     parse(process.argv);
 processCommand(external_commander_);
 
