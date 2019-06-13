@@ -11,21 +11,14 @@ import { ensureDir } from "../helpers";
 export const handleFileAdd = function (language: string) {
     askForAdd().
         then(function (fileType: string) {
-            askForFileName().then(function (file) {
+            askForControllerName().then(function (file) {
                 const fileInfo = path.parse(file);
-                let fileNameWithExtension: string;
                 const componentName = fileInfo.name;
                 const extension = language == "typescript" ? "ts" : "js";
-                if (fileInfo.ext) {
-                    fileNameWithExtension = componentName + "." + extension;
-                }
-                else {
-                    fileNameWithExtension = getSnakeCase(componentName) + "." + extension;
-                }
-
+                let fileNameWithExtension: string = getSnakeCase(componentName) + "." + extension;
                 const folderName = `${fileType}s`;
                 ensureDir(folderName);
-                const content = getContent(fileType, componentName);
+                const content = createContentBasedOnFileType(fileType, componentName);
                 const filePath = `${folderName}/${fileNameWithExtension}`
                 fs.writeFileSync(filePath, content, {
                     encoding: "utf-8"
@@ -35,7 +28,7 @@ export const handleFileAdd = function (language: string) {
         });
 }
 
-const getContent = function (fileType: string, componentName: string) {
+const createContentBasedOnFileType = function (fileType: string, componentName: string) {
     switch (fileType) {
         case "controller": return getControllerTemplate(componentName);
         case "shield": return getShieldTemplate(componentName);
@@ -45,18 +38,17 @@ const getContent = function (fileType: string, componentName: string) {
     return "";
 }
 
-const askForFileName = function () {
+const askForControllerName = function () {
     return new Promise<string>(function (res, rej) {
         var questions = [{
-            name: 'file_name',
-            message: "enter file name",
+            name: 'controller_name',
+            message: "Enter controller name",
             type: 'input',
             choices: ["controller", "shield", "wall",]
         }];
         prompt(questions).
             then(function (answers) {
-                res(answers.file_name);
-                // res(path.parse(answers.file_name).name);
+                res(answers.controller_name);
             });
     });
 }

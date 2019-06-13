@@ -20,7 +20,7 @@ class SpinnerHelper {
         SpinnerHelper.spinnerInstance.stop();
     }
 }
-export const handleClone = function (type, name) {
+export const handleClone = async function (type, name) {
     if (pathExistsSync(name)) {
         console.error(`A folder with name ${name} already exist in the current directoy`);
         return;
@@ -32,9 +32,10 @@ export const handleClone = function (type, name) {
     command += type === "typescript" ? typescriptProjectUrl : javascriptProjectUrl;
     // clone inside the provided name
     command += " " + `${cloneProjPath}`;
-    runCommand(command).then(function (code) {
-        if (code != 0) {
-            console.log(`unable to clone, process exited with code ${code.toString()}`)
+    try {
+        let exitCode = await runCommand(command)
+        if (exitCode != 0) {
+            console.log(`unable to clone, process exited with code ${exitCode.toString()}`)
         }
         else {
             SpinnerHelper.init("setting up project");
@@ -47,18 +48,18 @@ export const handleClone = function (type, name) {
             SpinnerHelper.stop();
             SpinnerHelper.init(`downloading dependency`);
             // downloading dependencies
-            runCommand(`cd ${name} && npm install`).then(function (code) {
-                SpinnerHelper.stop();
-                if (code != 0) {
-                    console.log(`unable to install dependencies, process exited with code ${code.toString()}`)
-                }
-                else {
-                    console.log(`${EOL}new project ${name} created`);
-                }
-            })
+            exitCode = await runCommand(`cd ${name} && npm install`);
+            SpinnerHelper.stop();
+            if (exitCode != 0) {
+                console.log(`unable to install dependencies, process exited with code ${exitCode.toString()}`)
+            }
+            else {
+                console.log(`${EOL}new project ${name} created`);
+            }
         }
-    }).catch((err) => {
+    }
+    catch (err) {
         console.error(err);
         SpinnerHelper.stop();
-    })
+    }
 }
