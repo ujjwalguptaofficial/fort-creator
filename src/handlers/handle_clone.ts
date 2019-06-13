@@ -1,4 +1,4 @@
-import { runCommand } from "../helpers";
+import { runCommand, runCmdSync } from "../helpers";
 import { removeSync, moveSync, ensureDir, pathExistsSync } from "fs-extra";
 import * as Path from "path";
 import { Spinner } from "cli-spinner";
@@ -48,7 +48,7 @@ export const handleClone = async function (type, name) {
             SpinnerHelper.stop();
             SpinnerHelper.init(`downloading dependency`);
             // downloading dependencies
-            exitCode = await runCommand(`cd ${name} && npm install`);
+            runCmdSync(`cd ${name} && npm install`);
             SpinnerHelper.stop();
             if (exitCode != 0) {
                 console.log(`unable to install dependencies, process exited with code ${exitCode.toString()}`)

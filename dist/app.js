@@ -141,6 +141,18 @@ module.exports = require("fs");
 
 /***/ }),
 /* 4 */
+/*!********************************!*\
+  !*** external "child_process" ***!
+  \********************************/
+/*! no static exports found */
+/*! exports used: exec, execSync */
+/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
+/***/ (function(module, exports) {
+
+module.exports = require("child_process");
+
+/***/ }),
+/* 5 */
 /*!****************************!*\
   !*** external "commander" ***!
   \****************************/
@@ -150,18 +162,6 @@ module.exports = require("fs");
 /***/ (function(module, exports) {
 
 module.exports = require("commander");
-
-/***/ }),
-/* 5 */
-/*!********************************!*\
-  !*** external "child_process" ***!
-  \********************************/
-/*! no static exports found */
-/*! exports used: exec */
-/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
-/***/ (function(module, exports) {
-
-module.exports = require("child_process");
 
 /***/ }),
 /* 6 */
@@ -203,7 +203,7 @@ module.exports = __webpack_require__(/*! /home/ujjwal/projects/opensource/fort-c
 /***/ }),
 /* 9 */
 /*!***********************************!*\
-  !*** ./src/index.ts + 16 modules ***!
+  !*** ./src/index.ts + 18 modules ***!
   \***********************************/
 /*! exports provided: processCommand */
 /*! all exports used */
@@ -268,7 +268,7 @@ var ensureDir = function (dir) {
 };
 
 // EXTERNAL MODULE: external "child_process"
-var external_child_process_ = __webpack_require__(5);
+var external_child_process_ = __webpack_require__(4);
 
 // CONCATENATED MODULE: ./src/helpers/run_command.ts
 
@@ -298,7 +298,33 @@ var getSnakeCase = function (value) {
         .join('_');
 };
 
+// EXTERNAL MODULE: external "fs-extra"
+var external_fs_extra_ = __webpack_require__(0);
+
+// EXTERNAL MODULE: external "path"
+var external_path_ = __webpack_require__(1);
+
+// CONCATENATED MODULE: ./src/helpers/getPackageVersion.ts
+
+
+var getPackageVersion = function () {
+    var pathOfPackage = external_path_["join"](__dirname, ".././package.json");
+    var contents = Object(external_fs_extra_["readFileSync"])(pathOfPackage, {
+        encoding: "utf8"
+    });
+    var packageInfo = JSON.parse(contents);
+    return packageInfo.version;
+};
+
+// CONCATENATED MODULE: ./src/helpers/run_cmd_sync .ts
+
+var runCmdSync = function (cmd) {
+    Object(external_child_process_["execSync"])(cmd, { stdio: [0, 1, 2] });
+};
+
 // CONCATENATED MODULE: ./src/helpers/index.ts
+
+
 
 
 
@@ -327,9 +353,6 @@ var handleStart = function () {
         }
     });
 };
-
-// EXTERNAL MODULE: external "path"
-var external_path_ = __webpack_require__(1);
 
 // CONCATENATED MODULE: ./src/tshelpers/get_controller_template.ts
 var getControllerTemplate = function (controllerName) {
@@ -406,9 +429,6 @@ var askForControllerName = function () {
         });
     });
 };
-
-// EXTERNAL MODULE: external "fs-extra"
-var external_fs_extra_ = __webpack_require__(0);
 
 // EXTERNAL MODULE: external "cli-spinner"
 var external_cli_spinner_ = __webpack_require__(6);
@@ -490,41 +510,39 @@ var handleClone = function (type, name) {
                     command += " " + ("" + cloneProjPath);
                     _a.label = 1;
                 case 1:
-                    _a.trys.push([1, 6, , 7]);
+                    _a.trys.push([1, 3, , 4]);
                     return [4 /*yield*/, runCommand(command)];
                 case 2:
                     exitCode = _a.sent();
-                    if (!(exitCode != 0)) return [3 /*break*/, 3];
-                    console.log("unable to clone, process exited with code " + exitCode.toString());
-                    return [3 /*break*/, 5];
-                case 3:
-                    handle_clone_SpinnerHelper.init("setting up project");
-                    // Remove the .git directory
-                    Object(external_fs_extra_["removeSync"])(external_path_["join"](cloneProjPath, '.git/'));
-                    // copy project directory
-                    // ensureDir(name);
-                    Object(external_fs_extra_["moveSync"])(cloneProjPath, name);
-                    handle_clone_SpinnerHelper.stop();
-                    handle_clone_SpinnerHelper.init("downloading dependency");
-                    return [4 /*yield*/, runCommand("cd " + name + " && npm install")];
-                case 4:
-                    // downloading dependencies
-                    exitCode = _a.sent();
-                    handle_clone_SpinnerHelper.stop();
                     if (exitCode != 0) {
-                        console.log("unable to install dependencies, process exited with code " + exitCode.toString());
+                        console.log("unable to clone, process exited with code " + exitCode.toString());
                     }
                     else {
-                        console.log(external_os_["EOL"] + "new project " + name + " created");
+                        handle_clone_SpinnerHelper.init("setting up project");
+                        // Remove the .git directory
+                        Object(external_fs_extra_["removeSync"])(external_path_["join"](cloneProjPath, '.git/'));
+                        // copy project directory
+                        // ensureDir(name);
+                        Object(external_fs_extra_["moveSync"])(cloneProjPath, name);
+                        handle_clone_SpinnerHelper.stop();
+                        handle_clone_SpinnerHelper.init("downloading dependency");
+                        // downloading dependencies
+                        runCmdSync("cd " + name + " && npm install");
+                        handle_clone_SpinnerHelper.stop();
+                        if (exitCode != 0) {
+                            console.log("unable to install dependencies, process exited with code " + exitCode.toString());
+                        }
+                        else {
+                            console.log(external_os_["EOL"] + "new project " + name + " created");
+                        }
                     }
-                    _a.label = 5;
-                case 5: return [3 /*break*/, 7];
-                case 6:
+                    return [3 /*break*/, 4];
+                case 3:
                     err_1 = _a.sent();
                     console.error(err_1);
                     handle_clone_SpinnerHelper.stop();
-                    return [3 /*break*/, 7];
-                case 7: return [2 /*return*/];
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     });
@@ -537,11 +555,10 @@ var handleClone = function (type, name) {
 
 
 // EXTERNAL MODULE: external "commander"
-var external_commander_ = __webpack_require__(4);
+var external_commander_ = __webpack_require__(5);
 
 // CONCATENATED MODULE: ./src/index.ts
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processCommand", function() { return processCommand; });
-
 
 
 
@@ -554,14 +571,6 @@ var processCommand = function (commander) {
             then(function (language) {
             handleClone(language, appname_1);
         });
-    }
-    else if (commander.version) {
-        var pathOfPackage = external_path_["join"](__dirname, ".././package.json");
-        var contents = Object(external_fs_extra_["readFileSync"])(pathOfPackage, {
-            encoding: "utf8"
-        });
-        var packageInfo = JSON.parse(contents);
-        console.log(packageInfo.version);
     }
     else if (commander.add || commander.start || commander.deploy) {
         var content;
@@ -599,13 +608,14 @@ var processCommand = function (commander) {
         console.log('invalid command');
     }
 };
-external_commander_["option"]('new [folderName]', 'Create new project & put the content inside the specified folder').
-    option('-v, --version', 'get current version').
+external_commander_["version"](getPackageVersion(), '-v, --version').
+    option('new [folderName]', 'Create new project & put the content inside the specified folder').
     option('start', 'start development server').
     option('deploy [deploymentFolderName]', 'create build for deployment').
     option('add', 'add the components').
     parse(process.argv);
 processCommand(external_commander_);
+// console.log(commander);
 
 
 /***/ })
