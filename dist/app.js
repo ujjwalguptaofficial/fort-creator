@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*!
- * @license :fort-creator - V1.1.2 - 13/06/2019
+ * @license :fort-creator - V1.1.3 - 15/06/2019
  * https://github.com/ujjwalguptaofficial/fort-creator
  * Copyright (c) 2019 @Ujjwal Gupta; Licensed Apache-2.0
  */
@@ -319,7 +319,7 @@ var getPackageVersion = function () {
 // CONCATENATED MODULE: ./src/helpers/run_cmd_sync .ts
 
 var runCmdSync = function (cmd) {
-    Object(external_child_process_["execSync"])(cmd, { stdio: [0, 1, 2] });
+    Object(external_child_process_["execSync"])(cmd, { stdio: 'inherit' });
 };
 
 // CONCATENATED MODULE: ./src/helpers/index.ts
@@ -527,7 +527,7 @@ var handleClone = function (type, name) {
                         handle_clone_SpinnerHelper.stop();
                         handle_clone_SpinnerHelper.init("downloading dependency");
                         // downloading dependencies
-                        runCmdSync("cd " + name + " && npm install");
+                        runCmdSync("cd " + name + " && npm install && npm install fortjs@latest");
                         handle_clone_SpinnerHelper.stop();
                         if (exitCode != 0) {
                             console.log("unable to install dependencies, process exited with code " + exitCode.toString());

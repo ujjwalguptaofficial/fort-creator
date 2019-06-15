@@ -48,7 +48,7 @@ export const handleClone = async function (type, name) {
             SpinnerHelper.stop();
             SpinnerHelper.init(`downloading dependency`);
             // downloading dependencies
-            runCmdSync(`cd ${name} && npm install`);
+            runCmdSync(`cd ${name} && npm install && npm install fortjs@latest`);
             SpinnerHelper.stop();
             if (exitCode != 0) {
                 console.log(`unable to install dependencies, process exited with code ${exitCode.toString()}`)
