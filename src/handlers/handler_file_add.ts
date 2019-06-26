@@ -40,14 +40,14 @@ const createContentBasedOnFileType = function (fileType: string, componentName: 
 const askForControllerName = function () {
     return new Promise<string>(function (res, rej) {
         var questions = [{
-            name: 'controller_name',
-            message: "Enter controller name",
+            name: 'class_name',
+            message: "Enter class name",
             type: 'input',
             choices: ["controller", "shield", "wall",]
         }];
         prompt(questions).
             then(function (answers) {
-                res(answers.controller_name);
+                res(answers.class_name);
             });
     });
 }

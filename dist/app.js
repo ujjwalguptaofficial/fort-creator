@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*!
- * @license :fort-creator - V1.1.3 - 15/06/2019
+ * @license :fort-creator - V1.1.4 - 26/06/2019
  * https://github.com/ujjwalguptaofficial/fort-creator
  * Copyright (c) 2019 @Ujjwal Gupta; Licensed Apache-2.0
  */
@@ -418,14 +418,14 @@ var createContentBasedOnFileType = function (fileType, componentName) {
 var askForControllerName = function () {
     return new Promise(function (res, rej) {
         var questions = [{
-                name: 'controller_name',
-                message: "Enter controller name",
+                name: 'class_name',
+                message: "Enter class name",
                 type: 'input',
                 choices: ["controller", "shield", "wall",]
             }];
         Object(external_inquirer_["prompt"])(questions).
             then(function (answers) {
-            res(answers.controller_name);
+            res(answers.class_name);
         });
     });
 };
