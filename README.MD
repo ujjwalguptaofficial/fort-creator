@@ -21,5 +21,5 @@ e.g - `fort-creator start`
 e.g - `fort-creator add`
 
 * deploy - create the build for prodcution deployment
-e.g - `fort-creator deployment`
+e.g - `fort-creator deploy`
 
