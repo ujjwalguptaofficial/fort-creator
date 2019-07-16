@@ -26,7 +26,7 @@
     "build": "webpack",
     "buildpack": "npm run deploy && npm pack",
     "deploy": "NODE_ENV=production npm run build",
-    "build:install":"npm run buildpack && sudo npm i fort-creator-1.1.4.tgz -g"
+    "build:install": "npm run buildpack && sudo npm i fort-creator-1.1.4.tgz -g"
   },
   "repository": {
     "type": "git",

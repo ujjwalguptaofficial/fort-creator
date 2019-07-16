@@ -5,3 +5,4 @@ export * from './run_command';
 export * from './get_snake_case';
 export * from './getPackageVersion';
 export * from './run_cmd_sync ';
+export * from './set_env';
