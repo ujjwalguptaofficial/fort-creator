@@ -1,6 +1,6 @@
 {
   "name": "fort-creator",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "App generator for fortjs",
   "main": "./dist/app.js",
   "bin": {
