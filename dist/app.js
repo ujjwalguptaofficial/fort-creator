@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*!
- * @license :fort-creator - V1.1.5 - 06/10/2019
+ * @license :fort-creator - V1.2.0 - 06/10/2019
  * https://github.com/ujjwalguptaofficial/fort-creator
  * Copyright (c) 2019 @Ujjwal Gupta; Licensed Apache-2.0
  */
