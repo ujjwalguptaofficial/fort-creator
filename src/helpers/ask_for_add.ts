@@ -1,15 +1,12 @@
 import { prompt } from "inquirer";
 
-export const askForAdd = function () {
-    return new Promise(function (res, rej) {
-        var questions = [{
-            name: 'add_info',
-            message: "what do you want to add",
-            type: 'list',
-            choices: ["controller", "shield", "wall", "guard"]
-        }];
-        prompt(questions).then(function (answers) {
-            res(answers.add_info);
-        });
-    });
+export const askToChooseComponent = async () => {
+    var questions = [{
+        name: 'componentChoice',
+        message: "Choose the component to add",
+        type: 'list',
+        choices: ["Controller", "Shield", "Wall", "Guard"]
+    }];
+    const result = await prompt(questions);
+    return result.componentChoice as string;
 }

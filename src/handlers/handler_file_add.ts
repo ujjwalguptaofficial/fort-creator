@@ -1,4 +1,4 @@
-import { askForAdd, getSnakeCase } from "../helpers";
+import { askToChooseComponent, getSnakeCase } from "../helpers";
 import {
     prompt
 } from "inquirer";
@@ -7,28 +7,24 @@ import * as fs from "fs";
 import { getControllerTemplate, getShieldTemplate, getGuardTemplate, getWallTemplate } from "../tshelpers";
 import { ensureDir } from "../helpers";
 
-export const handleFileAdd = function (language: string) {
-    askForAdd().
-        then(function (fileType: string) {
-            askForControllerName().then(function (file) {
-                const fileInfo = path.parse(file);
-                const componentName = fileInfo.name;
-                const extension = language == "typescript" ? "ts" : "js";
-                let fileNameWithExtension: string = getSnakeCase(componentName) + "." + extension;
-                const folderName = `${fileType}s`;
-                ensureDir(folderName);
-                const content = createContentBasedOnFileType(fileType, componentName);
-                const filePath = `${folderName}/${fileNameWithExtension}`
-                fs.writeFileSync(filePath, content, {
-                    encoding: "utf-8"
-                });
-                console.log(`file created at - "${filePath}"`)
-            })
-        });
+export const handleFileAdd = async (language: string) => {
+    const fileType: string = await askToChooseComponent();
+    const componentName = await askForComponentName(fileType);
+    const componentFullName = componentName[0].toUpperCase() + componentName.substr(1) + fileType;
+    const extension = language === "typescript" ? "ts" : "js";
+    let fileNameWithExtension: string = getSnakeCase(componentFullName) + "." + extension;
+    const folderName = `${fileType.toLowerCase()}s`;
+    ensureDir(folderName);
+    const content = createContentBasedOnFileType(fileType, componentFullName);
+    const filePath = `${folderName}/${fileNameWithExtension}`;
+    fs.writeFileSync(filePath, content, {
+        encoding: "utf-8"
+    });
+    console.log(`file created at - "${filePath}"`);
 }
 
 const createContentBasedOnFileType = function (fileType: string, componentName: string) {
-    switch (fileType) {
+    switch (fileType.toLowerCase()) {
         case "controller": return getControllerTemplate(componentName);
         case "shield": return getShieldTemplate(componentName);
         case "guard": return getGuardTemplate(componentName);
@@ -37,17 +33,13 @@ const createContentBasedOnFileType = function (fileType: string, componentName: 
     return "";
 }
 
-const askForControllerName = function () {
-    return new Promise<string>(function (res, rej) {
-        var questions = [{
-            name: 'class_name',
-            message: "Enter class name",
-            type: 'input',
-            choices: ["controller", "shield", "wall",]
-        }];
-        prompt(questions).
-            then(function (answers) {
-                res(answers.class_name);
-            });
-    });
+const askForComponentName = async function (type: string) {
+    var questions = [{
+        name: 'componentName',
+        message: `Enter ${type} name`,
+        type: 'input'
+    }];
+
+    const answers = await prompt(questions);
+    return answers.componentName as string;
 }
