@@ -517,7 +517,7 @@ var handler_file_add_this = undefined;
 
 
 var handleFileAdd = function (language) { return handler_file_add_awaiter(handler_file_add_this, void 0, void 0, function () {
-    var fileType, componentName, componentFullName, extension, fileNameWithExtension, folderName, content, filePath;
+    var fileType, componentName, indexOfFileType, extension, fileNameWithExtension, folderName, content, filePath;
     return handler_file_add_generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, askToChooseComponent()];
@@ -526,12 +526,17 @@ var handleFileAdd = function (language) { return handler_file_add_awaiter(handle
                 return [4 /*yield*/, askForComponentName(fileType)];
             case 2:
                 componentName = _a.sent();
-                componentFullName = componentName[0].toUpperCase() + componentName.substr(1) + fileType;
+                componentName = componentName[0].toUpperCase() + componentName.substr(1);
+                indexOfFileType = componentName.length - fileType.length - 1;
+                if (componentName.toLowerCase().includes(fileType.toLowerCase(), indexOfFileType)) {
+                    componentName = componentName.substr(0, indexOfFileType + 1);
+                }
+                componentName += fileType;
                 extension = language === "typescript" ? "ts" : "js";
-                fileNameWithExtension = getSnakeCase(componentFullName) + "." + extension;
+                fileNameWithExtension = getSnakeCase(componentName) + "." + extension;
                 folderName = fileType.toLowerCase() + "s";
                 ensureDir(folderName);
-                content = createContentBasedOnFileType(fileType, componentFullName);
+                content = createContentBasedOnFileType(fileType, componentName);
                 filePath = folderName + "/" + fileNameWithExtension;
                 external_fs_["writeFileSync"](filePath, content, {
                     encoding: "utf-8"
