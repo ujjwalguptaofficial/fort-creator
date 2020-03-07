@@ -1,26 +1,13 @@
-import { runCommand, runCmdSync } from "../helpers";
+import { runCommand, runCmdSync, SpinnerHelper } from "../helpers";
 import { removeSync, moveSync, ensureDir, pathExistsSync } from "fs-extra";
 import * as Path from "path";
-import { Spinner } from "cli-spinner";
 import { EOL } from "os";
 
 const typescriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-typescript-starter";
 const javascriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-javascript-starter";
 
 
-class SpinnerHelper {
-    static spinnerInstance;
-    static init(text: string) {
-        const spinnerInstance = SpinnerHelper.spinnerInstance = new Spinner(`${text}.. %s`);
-        spinnerInstance.setSpinnerString(18);
-        spinnerInstance.start();
-    }
-
-    static stop() {
-        SpinnerHelper.spinnerInstance.stop();
-    }
-}
-export const handleClone = async function (type, name) {
+export const handleFortJs = async function (type, name) {
     if (pathExistsSync(name)) {
         console.error(`A folder with name ${name} already exist in the current directoy`);
         return;

@@ -5,7 +5,7 @@ export const askForProjectLanguage = function () {
             name: 'project_language',
             message: "choose project language",
             type: 'list',
-            choices: ["typescript", "javascript"]
+            choices: ["typescript", "javascript", "crystal"]
         }];
         prompt(questions).
             then(function (answers) {

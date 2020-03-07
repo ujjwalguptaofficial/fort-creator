@@ -1,17 +1,22 @@
 import { askForProjectLanguage, getPackageVersion } from "./helpers";
-import { handleDeploy, handleStart, handleFileAdd, handleClone } from "./handlers";
+import { handleDeploy, handleStart, handleFileAdd, handleFortJs } from "./handlers";
 import * as commander from "commander";
 import { pathExistsSync, readFileSync } from "fs-extra";
+import { handleShivneri } from "./handlers/handle_shivneri";
 
 const errorMessageForInvalidProjectDirectory = "Seems like you are not inside project directory.Please move to project dir & run the command again";
 
-export const processCommand = function (commander) {
+export const processCommand = async function (commander) {
     if (commander.new) {
         const appname = typeof commander.new != "string" ? "fortjs-app" : commander.new;
-        askForProjectLanguage().
-            then(function (language) {
-                handleClone(language, appname);
-            });
+        const language = await askForProjectLanguage();
+        if (language === "crystal") {
+            handleShivneri(appname);
+        }
+        else {
+            handleFortJs(language, appname);
+        }
+
     }
     else if (commander.add || commander.start || commander.deploy) {
         var content;

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /*!
- * @license :fort-creator - V1.2.1 - 06/10/2019
+ * @license :fort-creator - V1.2.1 - 07/03/2020
  * https://github.com/ujjwalguptaofficial/fort-creator
- * Copyright (c) 2019 @Ujjwal Gupta; Licensed Apache-2.0
+ * Copyright (c) 2020 @Ujjwal Gupta; Licensed Apache-2.0
  */
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -97,7 +97,7 @@ module.exports =
   !*** external "fs-extra" ***!
   \***************************/
 /*! no static exports found */
-/*! exports used: moveSync, pathExistsSync, readFileSync, removeSync */
+/*! exports used: ensureDir, moveSync, pathExistsSync, readFileSync, removeSync */
 /*! ModuleConcatenation bailout: Module is not an ECMAScript module */
 /***/ (function(module, exports) {
 
@@ -105,6 +105,18 @@ module.exports = require("fs-extra");
 
 /***/ }),
 /* 1 */
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/*! no static exports found */
+/*! exports used: join */
+/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+/* 2 */
 /*!***************************!*\
   !*** external "inquirer" ***!
   \***************************/
@@ -116,7 +128,7 @@ module.exports = require("fs-extra");
 module.exports = require("inquirer");
 
 /***/ }),
-/* 2 */
+/* 3 */
 /*!*********************!*\
   !*** external "fs" ***!
   \*********************/
@@ -126,18 +138,6 @@ module.exports = require("inquirer");
 /***/ (function(module, exports) {
 
 module.exports = require("fs");
-
-/***/ }),
-/* 3 */
-/*!***********************!*\
-  !*** external "path" ***!
-  \***********************/
-/*! no static exports found */
-/*! exports used: join */
-/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
 
 /***/ }),
 /* 4 */
@@ -189,6 +189,18 @@ module.exports = require("os");
 
 /***/ }),
 /* 8 */
+/*!*********************************!*\
+  !*** external "command-exists" ***!
+  \*********************************/
+/*! no static exports found */
+/*! exports used: default */
+/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
+/***/ (function(module, exports) {
+
+module.exports = require("command-exists");
+
+/***/ }),
+/* 9 */
 /*!****************************!*\
   !*** multi ./src/index.ts ***!
   \****************************/
@@ -197,18 +209,19 @@ module.exports = require("os");
 /*! ModuleConcatenation bailout: Module is not an ECMAScript module */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/ujjwal/projects/opensource/fort-creator/src/index.ts */9);
+module.exports = __webpack_require__(/*! /home/ujjwal/projects/opensource/fort-creator/src/index.ts */10);
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /*!***********************************!*\
-  !*** ./src/index.ts + 19 modules ***!
+  !*** ./src/index.ts + 21 modules ***!
   \***********************************/
 /*! exports provided: processCommand */
 /*! all exports used */
 /*! ModuleConcatenation bailout: Cannot concat with external "child_process" (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with external "cli-spinner" (<- Module is not an ECMAScript module) */
+/*! ModuleConcatenation bailout: Cannot concat with external "command-exists" (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with external "commander" (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with external "fs" (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with external "fs-extra" (<- Module is not an ECMAScript module) */
@@ -221,7 +234,7 @@ module.exports = __webpack_require__(/*! /home/ujjwal/projects/opensource/fort-c
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: external "inquirer"
-var external_inquirer_ = __webpack_require__(1);
+var external_inquirer_ = __webpack_require__(2);
 
 // CONCATENATED MODULE: ./src/helpers/ask_for_add.ts
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -288,7 +301,7 @@ var askForProjectLanguage = function () {
                 name: 'project_language',
                 message: "choose project language",
                 type: 'list',
-                choices: ["typescript", "javascript"]
+                choices: ["typescript", "javascript", "crystal"]
             }];
         Object(external_inquirer_["prompt"])(questions).
             then(function (answers) {
@@ -298,7 +311,7 @@ var askForProjectLanguage = function () {
 };
 
 // EXTERNAL MODULE: external "fs"
-var external_fs_ = __webpack_require__(2);
+var external_fs_ = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./src/helpers/ensure_dir.ts
 
@@ -343,7 +356,7 @@ var getSnakeCase = function (value) {
 var external_fs_extra_ = __webpack_require__(0);
 
 // EXTERNAL MODULE: external "path"
-var external_path_ = __webpack_require__(3);
+var external_path_ = __webpack_require__(1);
 
 // CONCATENATED MODULE: ./src/helpers/getPackageVersion.ts
 
@@ -368,7 +381,29 @@ var setEnv = function (key, value) {
     process.env[key] = value;
 };
 
+// EXTERNAL MODULE: external "cli-spinner"
+var external_cli_spinner_ = __webpack_require__(6);
+
+// CONCATENATED MODULE: ./src/helpers/spinner_helper.ts
+
+var spinnerInstance;
+var spinner_helper_SpinnerHelper = /** @class */ (function () {
+    function SpinnerHelper() {
+    }
+    SpinnerHelper.init = function (text) {
+        spinnerInstance = new external_cli_spinner_["Spinner"](text + ".. %s");
+        spinnerInstance.setSpinnerString(18);
+        spinnerInstance.start();
+    };
+    SpinnerHelper.stop = function () {
+        spinnerInstance.stop();
+    };
+    return SpinnerHelper;
+}());
+
+
 // CONCATENATED MODULE: ./src/helpers/index.ts
+
 
 
 
@@ -575,14 +610,11 @@ var askForComponentName = function (type) {
     });
 };
 
-// EXTERNAL MODULE: external "cli-spinner"
-var external_cli_spinner_ = __webpack_require__(6);
-
 // EXTERNAL MODULE: external "os"
 var external_os_ = __webpack_require__(7);
 
-// CONCATENATED MODULE: ./src/handlers/handle_clone.ts
-var handle_clone_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+// CONCATENATED MODULE: ./src/handlers/handle_fortjs.ts
+var handle_fortjs_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
@@ -590,7 +622,223 @@ var handle_clone_awaiter = (undefined && undefined.__awaiter) || function (thisA
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var handle_clone_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+var handle_fortjs_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+var typescriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-typescript-starter";
+var javascriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-javascript-starter";
+var handleFortJs = function (type, name) {
+    return handle_fortjs_awaiter(this, void 0, void 0, function () {
+        var cloneProjPath, command, exitCode, err_1;
+        return handle_fortjs_generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (Object(external_fs_extra_["pathExistsSync"])(name)) {
+                        console.error("A folder with name " + name + " already exist in the current directoy");
+                        return [2 /*return*/];
+                    }
+                    cloneProjPath = external_path_["join"](__dirname, name);
+                    command = "git clone --depth=1 ";
+                    // create the url based on type
+                    command += type === "typescript" ? typescriptProjectUrl : javascriptProjectUrl;
+                    // clone inside the provided name
+                    command += " " + ("" + cloneProjPath);
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, runCommand(command)];
+                case 2:
+                    exitCode = _a.sent();
+                    if (exitCode != 0) {
+                        console.log("unable to clone, process exited with code " + exitCode.toString());
+                    }
+                    else {
+                        spinner_helper_SpinnerHelper.init("setting up project");
+                        // Remove the .git directory
+                        Object(external_fs_extra_["removeSync"])(external_path_["join"](cloneProjPath, '.git/'));
+                        // copy project directory
+                        // ensureDir(name);
+                        Object(external_fs_extra_["moveSync"])(cloneProjPath, name);
+                        spinner_helper_SpinnerHelper.stop();
+                        spinner_helper_SpinnerHelper.init("downloading dependency");
+                        // downloading dependencies
+                        // runCmdSync(`npm i cross-env -g`);
+                        runCmdSync("cd " + name + " && npm install && npm install fortjs@latest");
+                        spinner_helper_SpinnerHelper.stop();
+                        if (exitCode != 0) {
+                            console.log("unable to install dependencies, process exited with code " + exitCode.toString());
+                        }
+                        else {
+                            console.log(external_os_["EOL"] + "new project " + name + " created");
+                        }
+                    }
+                    return [3 /*break*/, 4];
+                case 3:
+                    err_1 = _a.sent();
+                    console.error(err_1);
+                    spinner_helper_SpinnerHelper.stop();
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+};
+
+// CONCATENATED MODULE: ./src/handlers/index.ts
+
+
+
+
+
+// EXTERNAL MODULE: external "commander"
+var external_commander_ = __webpack_require__(5);
+
+// EXTERNAL MODULE: external "command-exists"
+var external_command_exists_ = __webpack_require__(8);
+var external_command_exists_default = /*#__PURE__*/__webpack_require__.n(external_command_exists_);
+
+// CONCATENATED MODULE: ./src/handlers/handle_shivneri.ts
+var handle_shivneri_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var handle_shivneri_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+var shardNotFound = "Shards command can not be found - either crystal is not installed or installation is broken.";
+var crystalNotFound = "Crystal command can not be found - either crystal is not installed or installation is broken.";
+
+
+function handleShivneri(appName) {
+    return handle_shivneri_awaiter(this, void 0, void 0, function () {
+        var isShardExist, crystalInitCommand, exitCode, srcPath, error_1;
+        return handle_shivneri_generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 10, , 11]);
+                    return [4 /*yield*/, external_command_exists_default()("crystal")];
+                case 1:
+                    isShardExist = _a.sent();
+                    if (!isShardExist) {
+                        return [2 /*return*/, console.error(crystalNotFound)];
+                    }
+                    crystalInitCommand = "crystal init " + appName;
+                    return [4 /*yield*/, runCommand(crystalInitCommand)];
+                case 2:
+                    exitCode = _a.sent();
+                    if (exitCode != 0) {
+                        console.error("Unable to create project, process exited with code " + exitCode.toString());
+                    }
+                    srcPath = external_path_["join"](process.cwd(), "src");
+                    return [4 /*yield*/, Object(external_fs_extra_["ensureDir"])(external_path_["join"](srcPath, "controllers"))];
+                case 3:
+                    _a.sent();
+                    return [4 /*yield*/, Object(external_fs_extra_["ensureDir"])(external_path_["join"](srcPath, "controllers"))];
+                case 4:
+                    _a.sent();
+                    return [4 /*yield*/, Object(external_fs_extra_["ensureDir"])(external_path_["join"](srcPath, "guards"))];
+                case 5:
+                    _a.sent();
+                    return [4 /*yield*/, Object(external_fs_extra_["ensureDir"])(external_path_["join"](srcPath, "services"))];
+                case 6:
+                    _a.sent();
+                    return [4 /*yield*/, Object(external_fs_extra_["ensureDir"])(external_path_["join"](srcPath, "models"))];
+                case 7:
+                    _a.sent();
+                    return [4 /*yield*/, Object(external_fs_extra_["ensureDir"])(external_path_["join"](srcPath, "walls"))];
+                case 8:
+                    _a.sent();
+                    return [4 /*yield*/, Object(external_fs_extra_["ensureDir"])(external_path_["join"](srcPath, "shields"))
+                        // var questions = [{
+                        //     name: 'componentName',
+                        //     message: `Enter ${type} name`,
+                        //     type: 'input'
+                        // }];
+                        // const answers = await prompt(questions);
+                        // return answers.componentName as string;
+                    ];
+                case 9:
+                    _a.sent();
+                    return [3 /*break*/, 11];
+                case 10:
+                    error_1 = _a.sent();
+                    console.error(crystalNotFound);
+                    return [3 /*break*/, 11];
+                case 11: return [2 /*return*/];
+            }
+        });
+    });
+}
+
+// CONCATENATED MODULE: ./src/index.ts
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processCommand", function() { return processCommand; });
+var src_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var src_generator = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -622,137 +870,65 @@ var handle_clone_generator = (undefined && undefined.__generator) || function (t
 
 
 
-var typescriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-typescript-starter";
-var javascriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-javascript-starter";
-var handle_clone_SpinnerHelper = /** @class */ (function () {
-    function SpinnerHelper() {
-    }
-    SpinnerHelper.init = function (text) {
-        var spinnerInstance = SpinnerHelper.spinnerInstance = new external_cli_spinner_["Spinner"](text + ".. %s");
-        spinnerInstance.setSpinnerString(18);
-        spinnerInstance.start();
-    };
-    SpinnerHelper.stop = function () {
-        SpinnerHelper.spinnerInstance.stop();
-    };
-    return SpinnerHelper;
-}());
-var handleClone = function (type, name) {
-    return handle_clone_awaiter(this, void 0, void 0, function () {
-        var cloneProjPath, command, exitCode, err_1;
-        return handle_clone_generator(this, function (_a) {
+var errorMessageForInvalidProjectDirectory = "Seems like you are not inside project directory.Please move to project dir & run the command again";
+var processCommand = function (commander) {
+    return src_awaiter(this, void 0, void 0, function () {
+        var appname, language, content, pathOfPackage, packageInfo, deployFolderName;
+        return src_generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (Object(external_fs_extra_["pathExistsSync"])(name)) {
-                        console.error("A folder with name " + name + " already exist in the current directoy");
-                        return [2 /*return*/];
-                    }
-                    cloneProjPath = external_path_["join"](__dirname, name);
-                    command = "git clone --depth=1 ";
-                    // create the url based on type
-                    command += type === "typescript" ? typescriptProjectUrl : javascriptProjectUrl;
-                    // clone inside the provided name
-                    command += " " + ("" + cloneProjPath);
-                    _a.label = 1;
+                    if (!commander.new) return [3 /*break*/, 2];
+                    appname = typeof commander.new != "string" ? "fortjs-app" : commander.new;
+                    return [4 /*yield*/, askForProjectLanguage()];
                 case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, runCommand(command)];
-                case 2:
-                    exitCode = _a.sent();
-                    if (exitCode != 0) {
-                        console.log("unable to clone, process exited with code " + exitCode.toString());
+                    language = _a.sent();
+                    if (language === "crystal") {
+                        handleShivneri(appname);
                     }
                     else {
-                        handle_clone_SpinnerHelper.init("setting up project");
-                        // Remove the .git directory
-                        Object(external_fs_extra_["removeSync"])(external_path_["join"](cloneProjPath, '.git/'));
-                        // copy project directory
-                        // ensureDir(name);
-                        Object(external_fs_extra_["moveSync"])(cloneProjPath, name);
-                        handle_clone_SpinnerHelper.stop();
-                        handle_clone_SpinnerHelper.init("downloading dependency");
-                        // downloading dependencies
-                        // runCmdSync(`npm i cross-env -g`);
-                        runCmdSync("cd " + name + " && npm install && npm install fortjs@latest");
-                        handle_clone_SpinnerHelper.stop();
-                        if (exitCode != 0) {
-                            console.log("unable to install dependencies, process exited with code " + exitCode.toString());
+                        handleFortJs(language, appname);
+                    }
+                    return [3 /*break*/, 3];
+                case 2:
+                    if (commander.add || commander.start || commander.deploy) {
+                        try {
+                            pathOfPackage = "./package.json";
+                            if (!Object(external_fs_extra_["pathExistsSync"])(pathOfPackage)) {
+                                console.error(errorMessageForInvalidProjectDirectory);
+                                return [2 /*return*/];
+                            }
+                            content = Object(external_fs_extra_["readFileSync"])(pathOfPackage, {
+                                encoding: "utf8"
+                            });
+                        }
+                        catch (ex) {
+                            console.error(errorMessageForInvalidProjectDirectory);
+                        }
+                        packageInfo = JSON.parse(content);
+                        if (packageInfo && packageInfo.project && packageInfo.project.framework === "fortjs") {
+                            if (commander.start) {
+                                handleStart();
+                            }
+                            else if (commander.deploy) {
+                                deployFolderName = typeof commander.deploy == "string" ? commander.deploy : "bin";
+                                handleDeploy(deployFolderName);
+                            }
+                            else if (commander.add) {
+                                handleFileAdd(packageInfo.project.language);
+                            }
                         }
                         else {
-                            console.log(external_os_["EOL"] + "new project " + name + " created");
+                            console.error(errorMessageForInvalidProjectDirectory);
                         }
                     }
-                    return [3 /*break*/, 4];
-                case 3:
-                    err_1 = _a.sent();
-                    console.error(err_1);
-                    handle_clone_SpinnerHelper.stop();
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    else {
+                        console.log('invalid command');
+                    }
+                    _a.label = 3;
+                case 3: return [2 /*return*/];
             }
         });
     });
-};
-
-// CONCATENATED MODULE: ./src/handlers/index.ts
-
-
-
-
-
-// EXTERNAL MODULE: external "commander"
-var external_commander_ = __webpack_require__(5);
-
-// CONCATENATED MODULE: ./src/index.ts
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processCommand", function() { return processCommand; });
-
-
-
-
-var errorMessageForInvalidProjectDirectory = "Seems like you are not inside project directory.Please move to project dir & run the command again";
-var processCommand = function (commander) {
-    if (commander.new) {
-        var appname_1 = typeof commander.new != "string" ? "fortjs-app" : commander.new;
-        askForProjectLanguage().
-            then(function (language) {
-            handleClone(language, appname_1);
-        });
-    }
-    else if (commander.add || commander.start || commander.deploy) {
-        var content;
-        try {
-            var pathOfPackage = "./package.json";
-            if (!Object(external_fs_extra_["pathExistsSync"])(pathOfPackage)) {
-                console.error(errorMessageForInvalidProjectDirectory);
-                return;
-            }
-            content = Object(external_fs_extra_["readFileSync"])(pathOfPackage, {
-                encoding: "utf8"
-            });
-        }
-        catch (ex) {
-            console.error(errorMessageForInvalidProjectDirectory);
-        }
-        var packageInfo = JSON.parse(content);
-        if (packageInfo && packageInfo.project && packageInfo.project.framework === "fortjs") {
-            if (commander.start) {
-                handleStart();
-            }
-            else if (commander.deploy) {
-                var deployFolderName = typeof commander.deploy == "string" ? commander.deploy : "bin";
-                handleDeploy(deployFolderName);
-            }
-            else if (commander.add) {
-                handleFileAdd(packageInfo.project.language);
-            }
-        }
-        else {
-            console.error(errorMessageForInvalidProjectDirectory);
-        }
-    }
-    else {
-        console.log('invalid command');
-    }
 };
 external_commander_["version"](getPackageVersion(), '-v, --version').
     option('new [folderName]', 'Create new project & put the content inside the specified folder').
