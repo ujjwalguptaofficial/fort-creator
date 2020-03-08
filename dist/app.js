@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*!
- * @license :fort-creator - V1.2.1 - 07/03/2020
+ * @license :fort-creator - V1.2.1 - 08/03/2020
  * https://github.com/ujjwalguptaofficial/fort-creator
  * Copyright (c) 2020 @Ujjwal Gupta; Licensed Apache-2.0
  */
@@ -780,7 +780,7 @@ function handleShivneri(appName) {
                     if (!isShardExist) {
                         return [2 /*return*/, console.error(crystalNotFound)];
                     }
-                    crystalInitCommand = "crystal init " + appName;
+                    crystalInitCommand = "crystal init app " + appName;
                     return [4 /*yield*/, runCommand(crystalInitCommand)];
                 case 2:
                     exitCode = _a.sent();

@@ -7,11 +7,14 @@ import { handleShivneri } from "./handlers/handle_shivneri";
 const errorMessageForInvalidProjectDirectory = "Seems like you are not inside project directory.Please move to project dir & run the command again";
 
 export const processCommand = async function (commander) {
+    console.log("1")
     if (commander.new) {
-        const appname = typeof commander.new != "string" ? "fortjs-app" : commander.new;
+        console.log("2")
+        const appname = typeof commander.new != "string" ? "fort" : commander.new;
         const language = await askForProjectLanguage();
+        console.log("creating projects..")
         if (language === "crystal") {
-            handleShivneri(appname);
+            return handleShivneri(appname);
         }
         else {
             handleFortJs(language, appname);
