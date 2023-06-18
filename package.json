@@ -1,7 +1,7 @@
 {
   "name": "fort-creator",
-  "version": "1.2.1",
-  "description": "App generator for fortjs",
+  "version": "2.0.0",
+  "description": "Application generator for fortjs",
   "main": "./dist/app.js",
   "bin": {
     "fort-creator": "./dist/app.js"
@@ -26,8 +26,9 @@
   "scripts": {
     "build": "webpack",
     "buildpack": "npm run deploy && npm pack",
-    "deploy": "NODE_ENV=production npm run build",
-    "build:install": "npm run buildpack && sudo npm i fort-creator-1.2.1.tgz -g"
+    "deploy": "npm run build",
+    "build:install": "npm run buildpack && sudo npm i fort-creator-1.2.1.tgz -g",
+    "prepublishOnly": "npm run deploy"
   },
   "repository": {
     "type": "git",

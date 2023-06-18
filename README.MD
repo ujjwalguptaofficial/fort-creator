@@ -5,17 +5,17 @@ App generator & development helper for fortjs
 # How to use
 
 * Install the package globally - `npm i fort-creator -g`
-* Create new app - `fort-creator new ${appName}`
+* Create new app - `fort-creator init`
 * Move to the project directory - `cd ${appName}`
-* Start the development server with hot reloading - `fort-creator start`
+* Start the development server with hot reloading - `fort-creator dev`
 
 # Commands
 
-* new [appName] - create new project
-e.g - `fort-creator new my-app`
+* init - create new project
+e.g - `fort-creator init`
 
-* start - start the development server 
-e.g - `fort-creator start`
+* dev - start the development server 
+e.g - `fort-creator dev`
 
 * add - add file
 e.g - `fort-creator add`

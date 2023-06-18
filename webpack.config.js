@@ -43,7 +43,7 @@ module.exports = {
     },
     output: {
         filename: 'app.js',
-        path: path.resolve(__dirname, process.env.NODE_ENV == "production" ? "dist" : 'bin'),
+        path: path.resolve(__dirname, "dist"),
         pathinfo: true,
         library: 'Fort-Creator',
         libraryTarget: "commonjs2"
