@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /*!
- * @license :fort-creator - V1.2.1 - 06/10/2019
+ * @license :fort-creator - V1.2.1 - 18/06/2023
  * https://github.com/ujjwalguptaofficial/fort-creator
- * Copyright (c) 2019 @Ujjwal Gupta; Licensed Apache-2.0
+ * Copyright (c) 2023 @Ujjwal Gupta; Licensed Apache-2.0
  */
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
@@ -88,23 +88,11 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/*!***************************!*\
-  !*** external "fs-extra" ***!
-  \***************************/
-/*! no static exports found */
-/*! exports used: moveSync, pathExistsSync, readFileSync, removeSync */
-/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
-/***/ (function(module, exports) {
-
-module.exports = require("fs-extra");
-
-/***/ }),
-/* 1 */
 /*!***************************!*\
   !*** external "inquirer" ***!
   \***************************/
@@ -116,7 +104,7 @@ module.exports = require("fs-extra");
 module.exports = require("inquirer");
 
 /***/ }),
-/* 2 */
+/* 1 */
 /*!*********************!*\
   !*** external "fs" ***!
   \*********************/
@@ -128,19 +116,19 @@ module.exports = require("inquirer");
 module.exports = require("fs");
 
 /***/ }),
-/* 3 */
-/*!***********************!*\
-  !*** external "path" ***!
-  \***********************/
+/* 2 */
+/*!***************************!*\
+  !*** external "fs-extra" ***!
+  \***************************/
 /*! no static exports found */
-/*! exports used: join */
+/*! exports used: pathExistsSync, readFileSync */
 /*! ModuleConcatenation bailout: Module is not an ECMAScript module */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
+module.exports = require("fs-extra");
 
 /***/ }),
-/* 4 */
+/* 3 */
 /*!********************************!*\
   !*** external "child_process" ***!
   \********************************/
@@ -152,12 +140,24 @@ module.exports = require("path");
 module.exports = require("child_process");
 
 /***/ }),
+/* 4 */
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/*! no static exports found */
+/*! exports used: join */
+/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
 /* 5 */
 /*!****************************!*\
   !*** external "commander" ***!
   \****************************/
 /*! no static exports found */
-/*! all exports used */
+/*! exports used: Command */
 /*! ModuleConcatenation bailout: Module is not an ECMAScript module */
 /***/ (function(module, exports) {
 
@@ -165,18 +165,6 @@ module.exports = require("commander");
 
 /***/ }),
 /* 6 */
-/*!******************************!*\
-  !*** external "cli-spinner" ***!
-  \******************************/
-/*! no static exports found */
-/*! exports used: Spinner */
-/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
-/***/ (function(module, exports) {
-
-module.exports = require("cli-spinner");
-
-/***/ }),
-/* 7 */
 /*!*********************!*\
   !*** external "os" ***!
   \*********************/
@@ -188,7 +176,31 @@ module.exports = require("cli-spinner");
 module.exports = require("os");
 
 /***/ }),
+/* 7 */
+/*!******************************!*\
+  !*** external "cli-spinner" ***!
+  \******************************/
+/*! no static exports found */
+/*! exports used: Spinner */
+/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
+/***/ (function(module, exports) {
+
+module.exports = require("cli-spinner");
+
+/***/ }),
 /* 8 */
+/*!**********************************************!*\
+  !*** external "github-directory-downloader" ***!
+  \**********************************************/
+/*! no static exports found */
+/*! exports used: default */
+/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
+/***/ (function(module, exports) {
+
+module.exports = require("github-directory-downloader");
+
+/***/ }),
+/* 9 */
 /*!****************************!*\
   !*** multi ./src/index.ts ***!
   \****************************/
@@ -197,21 +209,22 @@ module.exports = require("os");
 /*! ModuleConcatenation bailout: Module is not an ECMAScript module */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/ujjwal/projects/opensource/fort-creator/src/index.ts */9);
+module.exports = __webpack_require__(/*! /home/geralt/Documents/projects/opensource/fort-creator/src/index.ts */10);
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /*!***********************************!*\
-  !*** ./src/index.ts + 19 modules ***!
+  !*** ./src/index.ts + 23 modules ***!
   \***********************************/
-/*! exports provided: processCommand */
+/*! no exports provided */
 /*! all exports used */
 /*! ModuleConcatenation bailout: Cannot concat with external "child_process" (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with external "cli-spinner" (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with external "commander" (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with external "fs" (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with external "fs-extra" (<- Module is not an ECMAScript module) */
+/*! ModuleConcatenation bailout: Cannot concat with external "github-directory-downloader" (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with external "inquirer" (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with external "os" (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with external "path" (<- Module is not an ECMAScript module) */
@@ -220,8 +233,11 @@ module.exports = __webpack_require__(/*! /home/ujjwal/projects/opensource/fort-c
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
+// EXTERNAL MODULE: external "commander"
+var external_commander_ = __webpack_require__(5);
+
 // EXTERNAL MODULE: external "inquirer"
-var external_inquirer_ = __webpack_require__(1);
+var external_inquirer_ = __webpack_require__(0);
 
 // CONCATENATED MODULE: ./src/helpers/ask_for_add.ts
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -281,24 +297,65 @@ var askToChooseComponent = function () { return __awaiter(_this, void 0, void 0,
 }); };
 
 // CONCATENATED MODULE: ./src/helpers/ask_for_project_language.ts
+var ask_for_project_language_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var ask_for_project_language_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 
 var askForProjectLanguage = function () {
-    return new Promise(function (res, rej) {
-        var questions = [{
-                name: 'project_language',
-                message: "choose project language",
-                type: 'list',
-                choices: ["typescript", "javascript"]
-            }];
-        Object(external_inquirer_["prompt"])(questions).
-            then(function (answers) {
-            res(answers.project_language);
+    return ask_for_project_language_awaiter(this, void 0, void 0, function () {
+        var questions, answers;
+        return ask_for_project_language_generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    questions = [{
+                            name: 'project_language',
+                            message: "Choose project language",
+                            type: 'list',
+                            choices: ["typescript", "javascript"]
+                        }];
+                    return [4 /*yield*/, Object(external_inquirer_["prompt"])(questions)];
+                case 1:
+                    answers = _a.sent();
+                    return [2 /*return*/, answers.project_language];
+            }
         });
     });
 };
 
 // EXTERNAL MODULE: external "fs"
-var external_fs_ = __webpack_require__(2);
+var external_fs_ = __webpack_require__(1);
 
 // CONCATENATED MODULE: ./src/helpers/ensure_dir.ts
 
@@ -309,7 +366,7 @@ var ensureDir = function (dir) {
 };
 
 // EXTERNAL MODULE: external "child_process"
-var external_child_process_ = __webpack_require__(4);
+var external_child_process_ = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./src/helpers/run_command.ts
 
@@ -340,10 +397,10 @@ var getSnakeCase = function (value) {
 };
 
 // EXTERNAL MODULE: external "fs-extra"
-var external_fs_extra_ = __webpack_require__(0);
+var external_fs_extra_ = __webpack_require__(2);
 
 // EXTERNAL MODULE: external "path"
-var external_path_ = __webpack_require__(3);
+var external_path_ = __webpack_require__(4);
 
 // CONCATENATED MODULE: ./src/helpers/getPackageVersion.ts
 
@@ -368,7 +425,215 @@ var setEnv = function (key, value) {
     process.env[key] = value;
 };
 
+// CONCATENATED MODULE: ./src/helpers/ask_for_folder_name.ts
+var ask_for_folder_name_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var ask_for_folder_name_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+var askForFolderName = function () {
+    return ask_for_folder_name_awaiter(this, void 0, void 0, function () {
+        var questions, answers;
+        return ask_for_folder_name_generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log('Enter folder name to create project inside folder, leave blank for current folder');
+                    questions = [{
+                            name: 'folder_name',
+                            message: "Folder name - ",
+                            type: 'input',
+                        }];
+                    return [4 /*yield*/, Object(external_inquirer_["prompt"])(questions)];
+                case 1:
+                    answers = _a.sent();
+                    return [2 /*return*/, answers.folder_name];
+            }
+        });
+    });
+};
+
+// EXTERNAL MODULE: external "os"
+var external_os_ = __webpack_require__(6);
+
+// EXTERNAL MODULE: external "cli-spinner"
+var external_cli_spinner_ = __webpack_require__(7);
+
+// EXTERNAL MODULE: external "github-directory-downloader"
+var external_github_directory_downloader_ = __webpack_require__(8);
+var external_github_directory_downloader_default = /*#__PURE__*/__webpack_require__.n(external_github_directory_downloader_);
+
+// CONCATENATED MODULE: ./src/helpers/create_project.ts
+var create_project_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var create_project_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+var create_project_SpinnerHelper = /** @class */ (function () {
+    function SpinnerHelper() {
+    }
+    SpinnerHelper.init = function (text) {
+        var spinnerInstance = SpinnerHelper.spinnerInstance = new external_cli_spinner_["Spinner"](text + ".. %s");
+        spinnerInstance.setSpinnerString(18);
+        spinnerInstance.start();
+    };
+    SpinnerHelper.stop = function () {
+        SpinnerHelper.spinnerInstance.stop();
+    };
+    return SpinnerHelper;
+}());
+var createProject = function (type, folderName) {
+    return create_project_awaiter(this, void 0, void 0, function () {
+        var projectPath, templatePath, downloadStat, err, exitCode, err_1;
+        return create_project_generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    projectPath = external_path_["join"](process.cwd(), folderName);
+                    templatePath = "https://github.com/ujjwalguptaofficial/fortjs-templates/tree/main/" + type;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 4, , 5]);
+                    create_project_SpinnerHelper.init("Setting up project");
+                    return [4 /*yield*/, external_github_directory_downloader_default()(templatePath, projectPath, {
+                            muteLog: true
+                        })];
+                case 2:
+                    downloadStat = _a.sent();
+                    if (!downloadStat.success) {
+                        err = "error - " + downloadStat.error + ", project path = " + projectPath + ", template path = " + templatePath;
+                        throw new Error(err || 'Can not download the template repo, please contact author if you are seeing this error.');
+                    }
+                    create_project_SpinnerHelper.stop();
+                    create_project_SpinnerHelper.init("Installing dependency");
+                    return [4 /*yield*/, runCommand("cd " + projectPath + " && npm i")];
+                case 3:
+                    exitCode = _a.sent();
+                    create_project_SpinnerHelper.stop();
+                    if (exitCode != 0) {
+                        console.log("Unable to install dependencies, process exited with code " + exitCode.toString());
+                    }
+                    else {
+                        console.log(external_os_["EOL"] + "new project '" + projectPath + "' initiated");
+                        if (folderName) {
+                            console.log("Execute command 'cd " + folderName + "' to enter into project directory.");
+                        }
+                        console.log("Execute command - 'fort-creator dev' for startin dev server.");
+                    }
+                    return [3 /*break*/, 5];
+                case 4:
+                    err_1 = _a.sent();
+                    console.error(err_1);
+                    create_project_SpinnerHelper.stop();
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
+            }
+        });
+    });
+};
+
+// CONCATENATED MODULE: ./src/constants/index.ts
+var ERROR_MSG_FOR_INVALID_PROJECT_DIRECTORY = "Seems like you are not inside project directory. Please move to project directory and run the command again";
+
+// CONCATENATED MODULE: ./src/helpers/get_project_package_info.ts
+
+
+var getProjectPackageInfo = function () {
+    var content;
+    try {
+        var pathOfPackage = "./package.json";
+        if (!Object(external_fs_extra_["pathExistsSync"])(pathOfPackage)) {
+            console.error(ERROR_MSG_FOR_INVALID_PROJECT_DIRECTORY);
+            return false;
+        }
+        content = Object(external_fs_extra_["readFileSync"])(pathOfPackage, {
+            encoding: "utf8"
+        });
+    }
+    catch (ex) {
+        console.error(ERROR_MSG_FOR_INVALID_PROJECT_DIRECTORY);
+        return false;
+    }
+    var packageInfo = JSON.parse(content);
+    return packageInfo;
+};
+
+// CONCATENATED MODULE: ./src/helpers/is_fort_project.ts
+
+var isFortProject = function () {
+    var packageInfo = getProjectPackageInfo();
+    return packageInfo && packageInfo.project && packageInfo.project.framework === "fortjs";
+};
+
 // CONCATENATED MODULE: ./src/helpers/index.ts
+
+
+
+
 
 
 
@@ -427,10 +692,10 @@ var handleDeploy = function (deployFolderName) {
                 case 1:
                     code = _a.sent();
                     if (code == 0) {
-                        console.log("build created for deploy");
+                        console.log("Build created for deploy");
                     }
                     else {
-                        console.log("unable to create build for deploy, process exited with code " + code.toString());
+                        console.log("Unable to create build for deploy, process exited with code " + code.toString());
                     }
                     return [2 /*return*/];
             }
@@ -443,32 +708,32 @@ var handleDeploy = function (deployFolderName) {
 var handleStart = function () {
     runCommand("npm run start").then(function (code) {
         if (code != 0) {
-            console.log("unable to start dev server, process exited with code " + code);
+            console.log("Unable to start dev server, process exited with code " + code);
         }
     });
 };
 
-// CONCATENATED MODULE: ./src/tshelpers/get_controller_template.ts
+// CONCATENATED MODULE: ./src/templates/get_controller_template.ts
 var getControllerTemplate = function (controllerName) {
-    return "\nimport { Controller, DefaultWorker, Worker, textResult } from \"fortjs\";\n\nexport class " + controllerName + " extends Controller {\n\n    @DefaultWorker()\n    async index() {\n        \n    }\n}";
+    return "\nimport { Controller, defaultWorker, worker, textResult } from \"fortjs\";\n\nexport class " + controllerName + " extends Controller {\n\n    @defaultWorker()\n    async index() {\n        \n    }\n}";
 };
 
-// CONCATENATED MODULE: ./src/tshelpers/get_guard_template.ts
+// CONCATENATED MODULE: ./src/templates/get_guard_template.ts
 var getGuardTemplate = function (guardName) {
     return "\nimport { Guard, textResult } from \"fortjs\";\n\nexport class " + guardName + " extends Guard {\n    async check() {\n        \n    }\n}";
 };
 
-// CONCATENATED MODULE: ./src/tshelpers/get_shield_template.ts
+// CONCATENATED MODULE: ./src/templates/get_shield_template.ts
 var getShieldTemplate = function (shieldName) {
     return "\nimport { Shield, textResult } from \"fortjs\";\nexport class " + shieldName + " extends Shield {\n    async protect() {\n        \n    }\n}";
 };
 
-// CONCATENATED MODULE: ./src/tshelpers/get_wall_template.ts
+// CONCATENATED MODULE: ./src/templates/get_wall_template.ts
 var getWallTemplate = function (wallName) {
     return "\nimport { Wall, textResult } from \"fortjs\";\n\nexport class " + wallName + " extends Wall {\n    async onIncoming() {\n        \n    }\n}    \n";
 };
 
-// CONCATENATED MODULE: ./src/tshelpers/index.ts
+// CONCATENATED MODULE: ./src/templates/index.ts
 
 
 
@@ -515,7 +780,6 @@ var handler_file_add_this = undefined;
 
 
 
-
 var handleFileAdd = function (language) { return handler_file_add_awaiter(handler_file_add_this, void 0, void 0, function () {
     var fileType, componentName, indexOfFileType, extension, fileNameWithExtension, folderName, content, filePath;
     return handler_file_add_generator(this, function (_a) {
@@ -537,7 +801,7 @@ var handleFileAdd = function (language) { return handler_file_add_awaiter(handle
                 folderName = fileType.toLowerCase() + "s";
                 ensureDir(folderName);
                 content = createContentBasedOnFileType(fileType, componentName);
-                filePath = folderName + "/" + fileNameWithExtension;
+                filePath = "src/" + folderName + "/" + fileNameWithExtension;
                 external_fs_["writeFileSync"](filePath, content, {
                     encoding: "utf-8"
                 });
@@ -561,11 +825,13 @@ var askForComponentName = function (type) {
         return handler_file_add_generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    questions = [{
+                    questions = [
+                        {
                             name: 'componentName',
                             message: "Enter " + type + " name",
                             type: 'input'
-                        }];
+                        }
+                    ];
                     return [4 /*yield*/, Object(external_inquirer_["prompt"])(questions)];
                 case 1:
                     answers = _a.sent();
@@ -575,14 +841,13 @@ var askForComponentName = function (type) {
     });
 };
 
-// EXTERNAL MODULE: external "cli-spinner"
-var external_cli_spinner_ = __webpack_require__(6);
+// CONCATENATED MODULE: ./src/handlers/index.ts
 
-// EXTERNAL MODULE: external "os"
-var external_os_ = __webpack_require__(7);
 
-// CONCATENATED MODULE: ./src/handlers/handle_clone.ts
-var handle_clone_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+
+
+// CONCATENATED MODULE: ./src/index.ts
+var src_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
@@ -590,7 +855,7 @@ var handle_clone_awaiter = (undefined && undefined.__awaiter) || function (thisA
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var handle_clone_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+var src_generator = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -617,151 +882,47 @@ var handle_clone_generator = (undefined && undefined.__generator) || function (t
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var src_this = undefined;
+
+var program = new external_commander_["Command"]();
 
 
-
-
-
-var typescriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-typescript-starter";
-var javascriptProjectUrl = "https://github.com/ujjwalguptaofficial/fortjs-javascript-starter";
-var handle_clone_SpinnerHelper = /** @class */ (function () {
-    function SpinnerHelper() {
+program.version(getPackageVersion(), '-v, --version');
+program.command('dev').description('start development server').action(function () {
+    if (isFortProject()) {
+        handleStart();
     }
-    SpinnerHelper.init = function (text) {
-        var spinnerInstance = SpinnerHelper.spinnerInstance = new external_cli_spinner_["Spinner"](text + ".. %s");
-        spinnerInstance.setSpinnerString(18);
-        spinnerInstance.start();
-    };
-    SpinnerHelper.stop = function () {
-        SpinnerHelper.spinnerInstance.stop();
-    };
-    return SpinnerHelper;
-}());
-var handleClone = function (type, name) {
-    return handle_clone_awaiter(this, void 0, void 0, function () {
-        var cloneProjPath, command, exitCode, err_1;
-        return handle_clone_generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (Object(external_fs_extra_["pathExistsSync"])(name)) {
-                        console.error("A folder with name " + name + " already exist in the current directoy");
-                        return [2 /*return*/];
-                    }
-                    cloneProjPath = external_path_["join"](__dirname, name);
-                    command = "git clone --depth=1 ";
-                    // create the url based on type
-                    command += type === "typescript" ? typescriptProjectUrl : javascriptProjectUrl;
-                    // clone inside the provided name
-                    command += " " + ("" + cloneProjPath);
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, runCommand(command)];
-                case 2:
-                    exitCode = _a.sent();
-                    if (exitCode != 0) {
-                        console.log("unable to clone, process exited with code " + exitCode.toString());
-                    }
-                    else {
-                        handle_clone_SpinnerHelper.init("setting up project");
-                        // Remove the .git directory
-                        Object(external_fs_extra_["removeSync"])(external_path_["join"](cloneProjPath, '.git/'));
-                        // copy project directory
-                        // ensureDir(name);
-                        Object(external_fs_extra_["moveSync"])(cloneProjPath, name);
-                        handle_clone_SpinnerHelper.stop();
-                        handle_clone_SpinnerHelper.init("downloading dependency");
-                        // downloading dependencies
-                        // runCmdSync(`npm i cross-env -g`);
-                        runCmdSync("cd " + name + " && npm install && npm install fortjs@latest");
-                        handle_clone_SpinnerHelper.stop();
-                        if (exitCode != 0) {
-                            console.log("unable to install dependencies, process exited with code " + exitCode.toString());
-                        }
-                        else {
-                            console.log(external_os_["EOL"] + "new project " + name + " created");
-                        }
-                    }
-                    return [3 /*break*/, 4];
-                case 3:
-                    err_1 = _a.sent();
-                    console.error(err_1);
-                    handle_clone_SpinnerHelper.stop();
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
-            }
-        });
+});
+program.command('deploy').description('Create build for deployment').action(function () {
+    if (isFortProject()) {
+        handleDeploy('');
+    }
+});
+program.command('add').description('Add component').action(function () {
+    if (isFortProject()) {
+        var packageInfo = getProjectPackageInfo();
+        var language = packageInfo && packageInfo.project && packageInfo.project.language;
+        handleFileAdd(language);
+    }
+});
+program.command('init').description('Initiate new project').action(function () { return src_awaiter(src_this, void 0, void 0, function () {
+    var language, folderName;
+    return src_generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, askForProjectLanguage()];
+            case 1:
+                language = _a.sent();
+                return [4 /*yield*/, askForFolderName()];
+            case 2:
+                folderName = _a.sent();
+                createProject(language, folderName);
+                return [2 /*return*/];
+        }
     });
-};
-
-// CONCATENATED MODULE: ./src/handlers/index.ts
-
-
-
-
-
-// EXTERNAL MODULE: external "commander"
-var external_commander_ = __webpack_require__(5);
-
-// CONCATENATED MODULE: ./src/index.ts
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processCommand", function() { return processCommand; });
-
-
-
-
-var errorMessageForInvalidProjectDirectory = "Seems like you are not inside project directory.Please move to project dir & run the command again";
-var processCommand = function (commander) {
-    if (commander.new) {
-        var appname_1 = typeof commander.new != "string" ? "fortjs-app" : commander.new;
-        askForProjectLanguage().
-            then(function (language) {
-            handleClone(language, appname_1);
-        });
-    }
-    else if (commander.add || commander.start || commander.deploy) {
-        var content;
-        try {
-            var pathOfPackage = "./package.json";
-            if (!Object(external_fs_extra_["pathExistsSync"])(pathOfPackage)) {
-                console.error(errorMessageForInvalidProjectDirectory);
-                return;
-            }
-            content = Object(external_fs_extra_["readFileSync"])(pathOfPackage, {
-                encoding: "utf8"
-            });
-        }
-        catch (ex) {
-            console.error(errorMessageForInvalidProjectDirectory);
-        }
-        var packageInfo = JSON.parse(content);
-        if (packageInfo && packageInfo.project && packageInfo.project.framework === "fortjs") {
-            if (commander.start) {
-                handleStart();
-            }
-            else if (commander.deploy) {
-                var deployFolderName = typeof commander.deploy == "string" ? commander.deploy : "bin";
-                handleDeploy(deployFolderName);
-            }
-            else if (commander.add) {
-                handleFileAdd(packageInfo.project.language);
-            }
-        }
-        else {
-            console.error(errorMessageForInvalidProjectDirectory);
-        }
-    }
-    else {
-        console.log('invalid command');
-    }
-};
-external_commander_["version"](getPackageVersion(), '-v, --version').
-    option('new [folderName]', 'Create new project & put the content inside the specified folder').
-    option('start', 'start development server').
-    option('deploy [deploymentFolderName]', 'create build for deployment').
-    option('add', 'add the components').
-    parse(process.argv);
-processCommand(external_commander_);
-// console.log(commander);
+}); });
+var parsed = program.parse(process.argv);
+// console.log('parsed', parsed);
+// processCommand(program.opts());
 
 
 /***/ })

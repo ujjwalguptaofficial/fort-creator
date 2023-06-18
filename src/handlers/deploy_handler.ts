@@ -5,8 +5,8 @@ export const handleDeploy = async function (deployFolderName: string) {
     setEnv('NODE_ENV', 'production');
     const code = await runCommand(`npm run deploy`);
     if (code == 0) {
-        console.log("build created for deploy")
+        console.log("Build created for deploy")
     } else {
-        console.log(`unable to create build for deploy, process exited with code ${code.toString()}`);
+        console.log(`Unable to create build for deploy, process exited with code ${code.toString()}`);
     }
 }

@@ -35,7 +35,11 @@ module.exports = {
         }]
     },
     resolve: {
-        extensions: ['.ts']
+        extensions: ['.ts'],
+        alias: {
+            "~": path.join(__dirname),
+            "@": path.join(__dirname, 'src'),
+        },
     },
     output: {
         filename: 'app.js',

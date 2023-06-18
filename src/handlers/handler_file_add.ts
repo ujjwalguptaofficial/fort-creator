@@ -1,11 +1,7 @@
-import { askToChooseComponent, getSnakeCase } from "../helpers";
-import {
-    prompt
-} from "inquirer";
-import * as path from "path";
+import { askToChooseComponent, getSnakeCase, ensureDir } from "@/helpers";
+import { prompt } from "inquirer";
 import * as fs from "fs";
-import { getControllerTemplate, getShieldTemplate, getGuardTemplate, getWallTemplate } from "../tshelpers";
-import { ensureDir } from "../helpers";
+import { getControllerTemplate, getShieldTemplate, getGuardTemplate, getWallTemplate } from "@/templates";
 
 export const handleFileAdd = async (language: string) => {
     const fileType: string = await askToChooseComponent();
@@ -21,7 +17,7 @@ export const handleFileAdd = async (language: string) => {
     const folderName = `${fileType.toLowerCase()}s`;
     ensureDir(folderName);
     const content = createContentBasedOnFileType(fileType, componentName);
-    const filePath = `${folderName}/${fileNameWithExtension}`;
+    const filePath = `src/${folderName}/${fileNameWithExtension}`;
     fs.writeFileSync(filePath, content, {
         encoding: "utf-8"
     });
@@ -39,11 +35,13 @@ const createContentBasedOnFileType = function (fileType: string, componentName: 
 }
 
 const askForComponentName = async function (type: string) {
-    var questions = [{
-        name: 'componentName',
-        message: `Enter ${type} name`,
-        type: 'input'
-    }];
+    var questions = [
+        {
+            name: 'componentName',
+            message: `Enter ${type} name`,
+            type: 'input'
+        }
+    ];
 
     const answers = await prompt(questions);
     return answers.componentName as string;

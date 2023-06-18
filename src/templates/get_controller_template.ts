@@ -1,10 +1,10 @@
 export const getControllerTemplate = function (controllerName: string) {
     return `
-import { Controller, DefaultWorker, Worker, textResult } from "fortjs";
+import { Controller, defaultWorker, worker, textResult } from "fortjs";
 
 export class ${controllerName} extends Controller {
 
-    @DefaultWorker()
+    @defaultWorker()
     async index() {
         
     }
