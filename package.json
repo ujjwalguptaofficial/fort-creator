@@ -27,7 +27,7 @@
     "build": "webpack",
     "buildpack": "npm run deploy && npm pack",
     "deploy": "npm run build",
-    "build:install": "npm run buildpack && sudo npm i fort-creator-1.2.1.tgz -g",
+    "build:install": "npm run buildpack && sudo npm i fort-creator-2.0.0.tgz -g",
     "prepublishOnly": "npm run deploy"
   },
   "repository": {

@@ -24,7 +24,7 @@ export const createProject = async function (type, folderName) {
 
         SpinnerHelper.init("Setting up project");
         const downloadStat = await ghDownload(templatePath, projectPath, {
-            muteLog: true
+            muteLog: false,
         });
         if (!downloadStat.success) {
             const err = `error - ${downloadStat.error}, project path = ${projectPath}, template path = ${templatePath}`;
