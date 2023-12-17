@@ -5,7 +5,7 @@ import { handleDeploy, handleFileAdd, handleStart } from '@/handlers';
 
 program.version(getPackageVersion(), '-v, --version');
 
-program.command('dev').description('start development server').action(() => {
+program.command('dev').description('Start development server').action(() => {
     if (isFortProject()) {
         handleStart();
     }
@@ -27,7 +27,7 @@ program.command('add').description('Add component').action(() => {
     }
 });
 
-program.command('init').description('Initiate new project').action(async () => {
+program.command('init').description('Initiate a new project').action(async () => {
     const language = await askForProjectLanguage();
     const folderName = await askForFolderName();
     createProject(language, folderName);
