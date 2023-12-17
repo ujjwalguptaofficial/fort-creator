@@ -1,7 +1,7 @@
 {
   "name": "fort-creator",
   "version": "2.0.0",
-  "description": "Application generator for fortjs",
+  "description": "Effortlessly generate Fort.js applications with this versatile application generator, empowering you to build robust and scalable web applications with ease.",
   "main": "./dist/app.js",
   "bin": {
     "fort-creator": "./dist/app.js"

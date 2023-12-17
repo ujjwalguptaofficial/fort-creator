@@ -1,25 +1,24 @@
-# Fort-Creator
+# fort-creator
 
-App generator & development helper for fortjs
+Effortlessly generate Fort.js applications with this versatile application generator, empowering you to build robust and scalable web applications with ease.
 
-# How to use
+## How to Use
 
-* Install the package globally - `npm i fort-creator -g`
-* Create new app - `fort-creator init`
-* Move to the project directory - `cd ${appName}`
-* Start the development server with hot reloading - `fort-creator dev`
+1. **Install the package globally:** `npm i fort-creator -g`
+2. **Create a new app:** `fort-creator init`
+3. **Move to the project directory:** `cd ${appName}`
+4. **Start the development server with hot reloading:** `fort-creator dev`
 
-# Commands
+## Commands
 
-* init - create new project
-e.g - `fort-creator init`
+- **init:** Create a new project  
+  Example: `fort-creator init`
 
-* dev - start the development server 
-e.g - `fort-creator dev`
+- **dev:** Start the development server  
+  Example: `fort-creator dev`
 
-* add - add file
-e.g - `fort-creator add`
+- **add:** Add a new file  
+  Example: `fort-creator add`
 
-* deploy - create the build for prodcution deployment
-e.g - `fort-creator deploy`
-
+- **deploy:** Create a production-ready build for deployment  
+  Example: `fort-creator deploy`
