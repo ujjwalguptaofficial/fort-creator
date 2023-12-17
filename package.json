@@ -1,6 +1,6 @@
 {
   "name": "fort-creator",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Effortlessly generate Fort.js applications with this versatile application generator, empowering you to build robust and scalable web applications with ease.",
   "main": "./dist/app.js",
   "bin": {
@@ -27,7 +27,7 @@
     "build": "webpack",
     "buildpack": "npm run deploy && npm pack",
     "deploy": "npm run build",
-    "build:install": "npm run buildpack && sudo npm i fort-creator-2.0.0.tgz -g",
+    "build:install": "npm run buildpack && sudo npm i fort-creator-2.0.1.tgz -g",
     "prepublishOnly": "npm run deploy"
   },
   "repository": {
